@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.assettagz.cordova.plugin.scan"
+    version="1.0.0">
+
+  <name>RFID Scanner</name>
+  <description>RFID Scanner for Assettagz</description>
+  <repo>https://github.com/neocodepil/cordova-plugin-rfidscanner.git</repo>
+  <keywords>rfid,scanner,aretepop,cordova,android,assettagz</keywords>
+  <license>Apache 2.0</license>
+  <author>NeoCode Software Solutions</author> 
+
+    <js-module src="www/Scan.js" name="Scan">
+        <clobbers target="scan" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Scan" >
+                <param name="android-package" value="com.assettagz.cordova.plugin.scan.Scan"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+          <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+          <uses-permission android:name="android.permission.INTERNET" />
+          <uses-permission android:name="android.permission.RECORD_AUDIO" />
+          <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+          <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+          <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+          <uses-permission android:name="android.permission.RECORD_AUDIO" />
+          <uses-permission android:name="android.permission.ACTION_HEADSET_PLUG" />
+          <uses-permission android:name="android.permission.AUDIO_SERVICE" />
+          <uses-permission android:name="android.permission.STREAM_MUSIC" />
+        </config-file>
+
+        <source-file src="src/android/Scan.java" target-dir="src/com/assettagz/cordova/plugin/scan" />
+        <source-file src="lib/android/A100_AL1001-23_AndroidLibrary.jar" target-dir="libs"/>
+    </platform>
+</plugin>
